@@ -15,7 +15,7 @@ public class VacancyAddDataRepositoryImpl
     }
 
     @Override
-    public List<VacancyAddData> findPageByVacancyWithCandidate(long opportunityId, int pageSize, int pageNumber) {
+    public List<VacancyAddData> findPageByVacancyWithCandidate(long vacancyId, int pageSize, int pageNumber) {
         return entityManager.createQuery("""
                         SELECT apply
                         FROM VacancyAddData apply
@@ -24,24 +24,7 @@ public class VacancyAddDataRepositoryImpl
                         WHERE apply.vacancy.id = :opportunityId
                         ORDER BY apply.createdAt DESC
                         """, VacancyAddData.class)
-                .setParameter("opportunityId", opportunityId)
-                .setMaxResults(pageSize)
-                .setFirstResult(pageSize * pageNumber)
-                .getResultList();
-    }
-
-    @Override
-    public List<VacancyAddData> findPageByEmployerWithVacancyAndCandidate(long employerId, int pageSize, int pageNumber) {
-        return entityManager.createQuery("""
-                        SELECT apply
-                        FROM VacancyAddData apply
-                          JOIN FETCH apply.vacancy
-                          JOIN FETCH apply.candidate
-                          JOIN FETCH apply.candidate.cv
-                        WHERE apply.vacancy.employer.id = :employerId
-                        ORDER BY apply.createdAt DESC
-                        """, VacancyAddData.class)
-                .setParameter("employerId", employerId)
+                .setParameter("opportunityId", vacancyId)
                 .setMaxResults(pageSize)
                 .setFirstResult(pageSize * pageNumber)
                 .getResultList();
