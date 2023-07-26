@@ -1,5 +1,6 @@
 package by.tms.job_finder.service;
 
+import by.tms.job_finder.dto.PagingRequestObject;
 import by.tms.job_finder.entity.VacancyAddData;
 import by.tms.job_finder.exception.BusinessException;
 
@@ -14,5 +15,5 @@ public interface VacancyAddDataService {
 
     void remove(VacancyAddData entity);
 
-    List<VacancyAddData> findPageByVacancyWithCandidate(long vacancyId, int pageSize, int pageNumber);
+    List<VacancyAddData> findPageByVacancyWithCandidate(PagingRequestObject pro);
 }

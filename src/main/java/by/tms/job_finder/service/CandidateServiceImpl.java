@@ -39,6 +39,6 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     public void remove(Candidate entity) {
-        candidateRepository.remove(entity);
+        candidateRepository.remove(entity.getId());
     }
 }

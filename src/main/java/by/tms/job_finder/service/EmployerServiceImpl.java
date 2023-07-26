@@ -1,6 +1,5 @@
 package by.tms.job_finder.service;
 
-import by.tms.job_finder.entity.Candidate;
 import by.tms.job_finder.entity.Employer;
 import by.tms.job_finder.exception.BusinessException;
 import by.tms.job_finder.repository.EmployerRepository;
@@ -39,6 +38,6 @@ public class EmployerServiceImpl implements EmployerService {
 
     @Override
     public void remove(Employer entity) {
-        employerRepository.remove(entity);
+        employerRepository.remove(entity.getId());
     }
 }

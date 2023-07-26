@@ -10,5 +10,5 @@ public interface BaseRepository<E, ID> {
 
     void create(E entity);
 
-    void remove(E entity);
+    void remove(ID id);
 }

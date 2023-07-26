@@ -1,8 +1,6 @@
 package by.tms.job_finder.entity;
 
-import by.tms.job_finder.utils.UriConverter;
 import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -27,6 +25,5 @@ public class Employer extends BaseEntity {
     private String employerName;
 
     @Column(name = "site")
-    @Convert(converter = UriConverter.class)
     private URI siteUrl;
 }

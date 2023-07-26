@@ -26,10 +26,10 @@ public class Vacancy extends BaseEntity {
     @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "description", nullable = false)
+    @Column(name = "discription", nullable = false)
     private String vacancyDescription;
 
-    @Column(name = "is_active", nullable = false)
+    @Column(name = "isactive", nullable = false)
     private Boolean isActive = true;
 
     @Column(name = "created_at", nullable = false)

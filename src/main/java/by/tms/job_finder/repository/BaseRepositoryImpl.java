@@ -29,7 +29,8 @@ public abstract class BaseRepositoryImpl<E, ID> implements BaseRepository<E, ID>
     }
 
     @Override
-    public void remove(E entity) {
-        entityManager.remove(entity);
+    public void remove(ID id) {
+        E tmpEntity = entityManager.find(entityClass, id);
+        entityManager.remove(tmpEntity);
     }
 }

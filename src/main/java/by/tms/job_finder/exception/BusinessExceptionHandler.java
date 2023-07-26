@@ -1,28 +1,29 @@
 package by.tms.job_finder.exception;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
 
-@ControllerAdvice
+@RestControllerAdvice
 @Slf4j
 public class BusinessExceptionHandler {
     @ExceptionHandler(BusinessException.class)
-    public ModelAndView onApplicationException(BusinessException e) {
+    public ResponseEntity<Object> onApplicationException(BusinessException e) {
         log.warn("Application error: {}", e.toString());
-        return new ModelAndView("error", Map.of(
-                "error", e.getMessage()
-        ));
+        return new ResponseEntity<Object>(
+                "Ошибка бизнес логики", new HttpHeaders(), HttpStatus.I_AM_A_TEAPOT);
     }
 
     @ExceptionHandler(Exception.class)
-    public ModelAndView onException(Exception e) {
+    public ResponseEntity<Object> onException(Exception e) {
         log.error("Unknown error:", e);
-        return new ModelAndView("error", Map.of(
-                "error", "Неизвестная ошибка"
-        ));
+        return new ResponseEntity<Object>(
+                "Неизвестная ошибка", new HttpHeaders(), HttpStatus.I_AM_A_TEAPOT);
     }
 }

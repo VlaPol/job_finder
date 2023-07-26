@@ -1,5 +1,6 @@
 package by.tms.job_finder.service;
 
+import by.tms.job_finder.dto.PagingRequestObject;
 import by.tms.job_finder.entity.VacancyAddData;
 import by.tms.job_finder.exception.BusinessException;
 import by.tms.job_finder.repository.VacancyAddDataRepository;
@@ -39,12 +40,11 @@ public class VacancyAddDataServiceImpl implements  VacancyAddDataService{
 
     @Override
     public void remove(VacancyAddData entity) {
-        vacancyAddDataRepository.remove(entity);
+        vacancyAddDataRepository.remove(entity.getId());
     }
-
     @Override
-    public List<VacancyAddData> findPageByVacancyWithCandidate(long vacancyId, int pageSize, int pageNumber) {
-        List<VacancyAddData> pageByVacancy = vacancyAddDataRepository.findPageByVacancyWithCandidate(vacancyId, pageSize, pageNumber);
+    public List<VacancyAddData> findPageByVacancyWithCandidate(PagingRequestObject pro) {
+        List<VacancyAddData> pageByVacancy = vacancyAddDataRepository.findPageByVacancyWithCandidate(pro);
         return pageByVacancy.isEmpty()
                 ? Collections.emptyList()
                 : pageByVacancy;
