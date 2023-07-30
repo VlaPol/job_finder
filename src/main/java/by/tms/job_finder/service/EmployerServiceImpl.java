@@ -7,8 +7,6 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -23,12 +21,8 @@ public class EmployerServiceImpl implements EmployerService {
 
     @Override
     public Employer findById(Long id) throws BusinessException {
-        Optional<Employer> employer = employerRepository.findById(id);
-        if (employer.isPresent()) {
-            return employer.get();
-        } else {
-            throw new BusinessException("Работодатель по указанному id не обнаружено");
-        }
+        return employerRepository.findById(id)
+                .orElseThrow(() -> new BusinessException("Работодатель по указанному id не обнаружено"));
     }
 
     @Override
