@@ -1,6 +1,7 @@
 package by.tms.job_finder.service;
 
 import by.tms.job_finder.dto.PagingRequestObject;
+import by.tms.job_finder.dto.VacancyAddDataDTO;
 import by.tms.job_finder.entity.VacancyAddData;
 import by.tms.job_finder.exception.BusinessException;
 
@@ -11,7 +12,7 @@ public interface VacancyAddDataService {
 
     VacancyAddData findById(Long id) throws BusinessException;
 
-    void create(VacancyAddData entity);
+    void create(VacancyAddDataDTO entity);
 
     void remove(VacancyAddData entity);
 

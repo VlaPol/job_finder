@@ -1,5 +1,6 @@
 package by.tms.job_finder.repository;
 
+import by.tms.job_finder.dto.VacancyAddDataDTO;
 import by.tms.job_finder.dto.PagingRequestObject;
 import by.tms.job_finder.entity.VacancyAddData;
 import org.springframework.stereotype.Repository;
@@ -18,16 +19,21 @@ public class VacancyAddDataRepositoryImpl
     @Override
     public List<VacancyAddData> findPageByVacancyWithCandidate(PagingRequestObject pro) {
         return entityManager.createQuery("""
-                        SELECT apply
-                        FROM VacancyAddData apply
-                          JOIN FETCH apply.candidate
-                          JOIN FETCH apply.candidate.cv
-                        WHERE apply.vacancy.id = :opportunityId
-                        ORDER BY apply.createdAt DESC
+                        SELECT a
+                        FROM VacancyAddData a
+                          JOIN FETCH a.candidate
+                          JOIN FETCH a.candidate.cv
+                        WHERE a.vacancy.id = :vacancyId
+                        ORDER BY a.createdAt DESC
                         """, VacancyAddData.class)
-                .setParameter("opportunityId", pro.getObjectId())
+                .setParameter("vacancyId", pro.getObjectId())
                 .setMaxResults(pro.getPageSize())
                 .setFirstResult(pro.getPageSize() * pro.getPageNumber())
                 .getResultList();
+    }
+
+    @Override
+    public void create(VacancyAddDataDTO entity) {
+        entityManager.persist(entity);
     }
 }
