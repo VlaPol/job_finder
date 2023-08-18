@@ -5,7 +5,7 @@ import by.tms.job_finder.entity.Employer;
 import lombok.Value;
 
 @Value
-public class EmployerPrincipal implements PrincipalObject{
+public class EmployerPrincipal implements PrincipalObject {
     Long id;
     String email;
 

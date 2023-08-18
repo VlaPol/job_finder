@@ -6,7 +6,7 @@ import lombok.Value;
 import java.util.UUID;
 
 @Value
-public class CandidatePrincipal implements PrincipalObject{
+public class CandidatePrincipal implements PrincipalObject {
     Long id;
     String email;
 

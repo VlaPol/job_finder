@@ -32,8 +32,8 @@ public class VacancyServiceImpl implements VacancyService {
 
     @Override
     public VacancyDTO findById(Long id) throws BusinessException {
-            return convertVacancyToDto(vacancyRepository.findById(id)
-                    .orElseThrow(()->new BusinessException("Вакансия по указанному id не обнаружено")));
+        return convertVacancyToDto(vacancyRepository.findById(id)
+                .orElseThrow(() -> new BusinessException("Вакансия по указанному id не обнаружено")));
     }
 
     @Override

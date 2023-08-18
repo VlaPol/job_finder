@@ -5,6 +5,6 @@ import lombok.Value;
 import java.io.Serializable;
 
 @Value
-public class CvDto{
+public class CvDto {
     String context;
 }

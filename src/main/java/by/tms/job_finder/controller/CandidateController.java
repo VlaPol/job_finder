@@ -15,22 +15,23 @@ public class CandidateController {
     CandidateService candidateService;
 
     @GetMapping("/reference/{id}")
-    Candidate findReferenceById(@PathVariable Long id){
+    Candidate findReferenceById(@PathVariable Long id) {
         return candidateService.getReferenceById(id);
     }
+
     @GetMapping("/{id}")
-    Candidate findEmployerByid(@PathVariable Long id){
+    Candidate findEmployerByid(@PathVariable Long id) {
         return candidateService.findById(id);
     }
 
     @PostMapping("/add")
-    void createNewEmployer(@RequestBody RegistrationCandidateDto candidate){
-            candidateService.registrateNewCandidate(candidate);
+    void createNewEmployer(@RequestBody RegistrationCandidateDto candidate) {
+        candidateService.registrateNewCandidate(candidate);
     }
 
     @DeleteMapping("/delete")
     @ResponseStatus(code = HttpStatus.OK)
-    void deleteCandidate(@RequestBody Candidate candidate){
+    void deleteCandidate(@RequestBody Candidate candidate) {
 
         candidateService.remove(candidate);
     }
