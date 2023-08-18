@@ -1,8 +1,7 @@
 package by.tms.job_finder.controller;
 
-import by.tms.job_finder.dto.CandidateDTO;
+import by.tms.job_finder.dto.RegistrationCandidateDto;
 import by.tms.job_finder.entity.Candidate;
-import by.tms.job_finder.entity.Employer;
 import by.tms.job_finder.service.CandidateService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,8 +24,8 @@ public class CandidateController {
     }
 
     @PostMapping("/add")
-    void createNewEmployer(@RequestBody CandidateDTO candidate){
-        candidateService.create(candidate);
+    void createNewEmployer(@RequestBody RegistrationCandidateDto candidate){
+            candidateService.registrateNewCandidate(candidate);
     }
 
     @DeleteMapping("/delete")

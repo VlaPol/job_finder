@@ -26,4 +26,7 @@ public class Employer extends BaseEntity {
 
     @Column(name = "site")
     private URI siteUrl;
+
+    @Column(name = "hash")
+    private String passHash;
 }
